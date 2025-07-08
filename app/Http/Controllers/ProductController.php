@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function show(int $id): string
+    public function show(): View
     {
-        return "Fiche du produit " . $id;
+        return view('pages.product-list');
+    }
+
+    public function showProduct(int $id): string
+    {
+        return view('pages.product-details', ['id' => $id]);
     }
 }

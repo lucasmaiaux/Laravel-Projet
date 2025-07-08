@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function show(): string
+    public function show(): View
     {
-        return "Panier";
+        return view('pages.cart');
     }
 }
