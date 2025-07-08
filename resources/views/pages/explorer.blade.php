@@ -1,10 +1,10 @@
 @section('page_title')
-    Miro Miro - Contact
+    Miro Miro - Explorer
 @endsection
 
 @extends('layouts.default')
 
 @section('content')
-    <h1>Contact</h1>
+    <h1>Explorer</h1>
     <p></p>
 @endsection

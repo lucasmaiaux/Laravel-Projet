@@ -10,4 +10,9 @@ class HomeController extends Controller
     {
         return view('pages.homepage');
     }
+
+    public function showContact(): View
+    {
+        return view('pages.contact');
+    }
 }

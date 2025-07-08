@@ -1,3 +1,7 @@
+@section('page_title')
+    Panier
+@endsection
+
 @extends('layouts.default')
 
 @section('content')
