@@ -11,14 +11,17 @@
         <img src="{{ asset('images/wave_top.svg') }}" alt="" class="wave" />
 
         <!-- Hero section -->
-        <section class="hero">
-            <img src="{{ asset('images/img_groupe1.png') }}" alt="Groupe portant des lunettes" />
-            <div class="hero-content">
-                <h1>MIRO MIRO propose un large choix de lunettes photochromiques, du design à la vente, incluant des modèles
-                    personnalisés</h1>
-                <a href="#" class="btn-primary">EXPLORER</a>
+        <section class="hero ">
+            <div class="img-wrap">
+                <img src="{{ asset('images/img_groupe1.png') }}" alt="Groupe portant des lunettes" />
+                <div class="hero-content">
+                    <h1>MIRO MIRO propose un large choix de lunettes photochromiques, du design à la vente, incluant des modèles
+                        personnalisés</h1>
+                    <a href="#" class="btn-primary">EXPLORER</a>
+                </div>
             </div>
         </section>
+        
 
         <!-- Wave déco (bas) -->
         <img src="{{ asset('images/wave_bottom.svg') }}" alt="" class="wave" />
