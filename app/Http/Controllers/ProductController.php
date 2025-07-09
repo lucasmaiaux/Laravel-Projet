@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function exploreProducts(): View
     {
-        return view('pages.explorer');
+        $products = DB::select('select * from products');
+
+        return view('pages.explorer', ['products' => $products]);
     }
 
-    public function showProduct(int $id): string
+    public function showProduct(int $id): View
     {
-        return view('pages.product-details', ['id' => $id]);
+        $product = DB::select('select * from products where id = ?', [$id]);
+
+        return view('pages.product-details', ['product' => $product]);
     }
 
     public function customizeProduct(): View

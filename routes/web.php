@@ -12,7 +12,8 @@ Route::get('/contact', [HomeController::class, 'showContact']);
 
 // Produits
 Route::get('/explorer', [ProductController::class, 'exploreProducts']);
-Route::get('/product/{id}', [ProductController::class, 'showProduct']);
+Route::get('/explorer/{id}', [ProductController::class, 'showProduct']);
+// Route::get('/{id}', [ProductController::class, 'showProduct']);
 Route::get('/customize', [ProductController::class, 'customizeProduct']);
 
 // Panier

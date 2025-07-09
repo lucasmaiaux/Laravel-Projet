@@ -5,10 +5,10 @@
     <img src="{{ asset('images/logoblanc1.png') }}" alt="Miro‑Miro" class="footer-logo" />
 
     <nav class="footer-nav">
-        <a href="#">Accueil</a>
-        <a href="#">Explorer</a>
-        <a href="#">Compte</a>
-        <a href="#">Personnaliser</a>
+        <a href="/">Accueil</a>
+        <a href="/explorer">Explorer</a>
+        <a href="/profile">Compte</a>
+        <a href="/customize">Personnaliser</a>
     </nav>
 
     <div class="footer-meta">
