@@ -12,9 +12,15 @@ Route::get('/contact', [HomeController::class, 'showContact']);
 
 // Produits
 Route::get('/explorer', [ProductController::class, 'exploreProducts']);
-Route::get('/explorer/{id}', [ProductController::class, 'showProduct']);
+Route::get('/explorer/{product}', [ProductController::class, 'showProduct'])->where(['product' => '[0-9]+']);
+// Route::get('/{product}', [ProductController::class, 'showProduct'])->where(['product' => '[0-9]+']);
 // Route::get('/{id}', [ProductController::class, 'showProduct']);
 Route::get('/customize', [ProductController::class, 'customizeProduct']);
+
+// Produits (sort)
+Route::get('/explorer/sortname', [ProductController::class, 'exploreProductsByName']);
+Route::get('/explorer/sortprice', [ProductController::class, 'exploreProductsByPrice']);
+
 
 // Panier
 Route::get('/cart', [CartController::class, 'show']);
