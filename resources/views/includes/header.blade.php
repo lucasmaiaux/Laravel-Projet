@@ -11,11 +11,11 @@
     <nav class="collapse navbar-collapse" id="primary-nav" aria-label="Navigation principale">
         <ul class="navbar-nav text-center">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="/explorer">Explorer</a></li>
+            <li class="nav-item"><a class="nav-link" href="/index">Explorer</a></li>
             <li class="nav-item"><a class="nav-link" href="/customize">Personnaliser</a></li>
             <li class="nav-item"><a class="nav-link" href="/profile">Compte</a></li>
             <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-
+            <li class="nav-item"><a class="nav-link" href="/backoffice/index">BackOffice</a></li>
         </ul>
     </nav>
 </div>

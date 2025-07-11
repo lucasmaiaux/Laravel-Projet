@@ -9,7 +9,7 @@
 
     @foreach ($products as $product)
     <section class="product-section">
-        <a href="/explorer/{{ $product->id }}">
+        <a href="/{{ $product->id }}">
             <img src="{{ $product->img_url }}" alt="img_lunettes" class="product-img"/>
         </a>
         <h3>{{ $product->name }}</h1>

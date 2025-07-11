@@ -299,6 +299,12 @@ a {
     text-align : center;
 }
 
+.indexContent {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
 /* --- Footer --- */
 footer {
     margin-top : 70px;
