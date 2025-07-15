@@ -16,6 +16,7 @@
             <li class="nav-item"><a class="nav-link" href="/profile">Compte</a></li>
             <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
             <li class="nav-item"><a class="nav-link" href="/backoffice/index">BackOffice</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cart">Panier</a></li>
         </ul>
     </nav>
 </div>

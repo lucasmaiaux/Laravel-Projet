@@ -16,6 +16,12 @@
         <div class="product-id"><strong>ID</strong> : {{ $product->id }}</div>
         <div class="product-description"><strong>Description</strong> : {{ $product->description }}</div>
         <div class="product-price"><strong>Prix</strong> : {{ $product->price }}€</div>
+
+        <form method="POST" action="/{{ $product->id }}/add-to-cart">
+            @csrf
+            <button name="product_id" value={{ $product->id }}>Ajouter au panier</button>
+        </form>
+
     </section>
     @endforeach 
 

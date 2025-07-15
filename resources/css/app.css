@@ -93,6 +93,10 @@ a {
     background: #000;
 }
 
+.cart-link {
+    margin-right : auto;
+}
+
 /* --- Wave décorative --- */
 .wave {
     display: block;

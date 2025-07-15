@@ -25,6 +25,9 @@ Route::delete('/backoffice/{product}/delete', [ProductController::class, 'delete
 Route::get('/backoffice/create', [ProductController::class, 'create'])->where(['product' => '[0-9]+']);
 Route::post('/backoffice/create', [ProductController::class, 'store'])->where(['product' => '[0-9]+']);
 
+Route::post('/{product_id}/add-to-cart', [CartController::class, 'add'])->where(['product' => '[0-9]+']);
+Route::delete('/cart', [CartController::class, 'detachProduct']);
+
 
 Route::get('/customize', [ProductController::class, 'customize']);
 

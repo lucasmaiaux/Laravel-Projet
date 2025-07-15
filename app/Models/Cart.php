@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
-class Product extends Model
+class Cart extends Model
 {
     public function products()
     {
-        return $this->belongsToMany(Cart::class, 'cart_product')
+        return $this->belongsToMany(Product::class, 'cart_product')
                     ->withPivot('quantity')
                     ->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
