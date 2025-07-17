@@ -22,7 +22,8 @@
 
             <div class="form-group product-description">
                 <label for="description">Description</label>
-                <input type="text" class="form-control" name="description" id="description" value="{{ $product->description }}">
+                <input type="text" class="form-control" name="description" id="description"
+                    value="{{ $product->description }}">
             </div>
             <div class="form-group product-price">
                 <label for="price">Prix</label>
@@ -30,6 +31,17 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
+            
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
         </form>
 
 

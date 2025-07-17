@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductStoreRequest;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
@@ -49,7 +50,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Product $product) : View
+    public function store(ProductStoreRequest $request, Product $product) : View
     {
         $product->name = $request->input('name');
         $product->img_url = $request->input('img_url');
