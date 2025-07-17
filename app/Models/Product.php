@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function products()
+    public function carts()
     {
         return $this->belongsToMany(Cart::class, 'cart_product')
                     ->withPivot('quantity')
