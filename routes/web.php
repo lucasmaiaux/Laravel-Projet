@@ -27,15 +27,15 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/index', [ProductController::class, 'index']);
 Route::get('/index/sortname', [ProductController::class, 'indexByName']);
 Route::get('/index/sortprice', [ProductController::class, 'indexByPrice']);
+Route::get('/{product_id}', [ProductController::class, 'show'])->where(['product_id' => '[0-9]+']);
 
-Route::get('/{product}', [ProductController::class, 'show'])->where(['product' => '[0-9]+']);
-
+// BackOffice
 Route::middleware('auth')->controller(ProductController::class)->group(function()
 {
     Route::get('/backoffice/index', 'indexAdmin');
     Route::get('/backoffice/{product}', 'showAdmin')->where(['product' => '[0-9]+']);
     Route::get('/backoffice/{product}/edit','edit')->where(['product' => '[0-9]+']);
-    Route::post('/backoffice/{product}/save', 'store')->where(['product' => '[0-9]+']);
+    Route::post('/backoffice/save', 'store')->where(['product' => '[0-9]+']);
     Route::delete('/backoffice/{product}/delete', 'delete')->where(['product' => '[0-9]+']);
     Route::get('/backoffice/create', 'create');
     Route::post('/backoffice/create', 'store');

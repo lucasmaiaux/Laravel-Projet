@@ -26,7 +26,19 @@ class ProductStoreRequest extends FormRequest
             'img_url' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric|gt:0',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'img_url.required' => 'An Image URL is required',
+            'name.required' => 'A name is required',
+            'description.required' => 'A description is required',
+            'price.required' => 'A price is required',
+            'price.numeric' => 'Price must be a number',
+            'price.gt' => 'Price must be a positive number'
         ];
     }
 }

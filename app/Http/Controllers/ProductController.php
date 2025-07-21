@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
@@ -50,25 +51,65 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductStoreRequest $request, Product $product) : View
-    {
-        $product->name = $request->input('name');
-        $product->img_url = $request->input('img_url');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
+    // public function store(ProductStoreRequest $request, Product $product) : View
+    // {
+    //     $product->name = $request->input('name');
+    //     $product->img_url = $request->input('img_url');
+    //     $product->description = $request->input('description');
+    //     $product->price = $request->input('price');
 
-        $product->save();
+    //     $product->save();
+
+    //     return view('admin.product-details', ['product' => $product]);
+    // }
+
+    public function store(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required',
+            'img_url' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|gt:0'
+        ]);
+
+        $product = Product::create($fields);
 
         return view('admin.product-details', ['product' => $product]);
+    }
+
+    public function APIstore(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required',
+            'img_url' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|gt:0'
+        ]);
+
+        $product = $request->user()->posts()->create($fields);
+
+        return $product;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(int $product_id)
     {
+        $product = Product::find($product_id);
+
+        if (!$product) {
+            return view('pages.product-not-available');
+        }
+
         return view('pages.product-details', ['product' => $product]);
     }
+
+    // public function show(Request $request)
+    // {
+    //     $id = $request->query('id');
+    //     return new ProductResource(Product::findOrFail($id));
+    // }
 
     public function showAdmin(Product $product)
     {

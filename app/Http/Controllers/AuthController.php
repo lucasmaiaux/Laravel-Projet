@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -34,16 +35,34 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    public function APIregister(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        $user = User::create($validated);
+
+        $token = $user->createToken($request->name);
+
+        return [
+            'user' => $user,
+            'token' => $token->plainTextToken
+        ];
+    }
+
     public function login(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users',
             'password' => 'required|string'
         ]);
         
         if (Auth::attempt($validated))
         {
-            $request->session()->regenerate(); // Protection
+            $request->session()->regenerate();
             return redirect('/');
         }
 
@@ -52,13 +71,35 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request)
+    public function APIlogin(Request $request)
     {
-        Auth::logout();
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string'
+        ]);
+        
+        $user = User::where('email', $request->email)->first();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return [
+                'message' => 'The provided credentials are incorrect'
+            ];
+        }
 
-        return redirect('/');
+        $token = $user->createToken($user->name);
+
+        return [
+            'user' => $user,
+            'token' => $token->plainTextToken
+        ];
+    }
+
+    public function APIlogout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return [
+            'message' => 'You are loggged out.'
+        ];
     }
 }

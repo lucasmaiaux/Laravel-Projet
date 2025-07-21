@@ -40,8 +40,8 @@ class CartController extends Controller
     public function updatePrice(Cart $cart)
     {
         $products = $cart->products;
-        //dd($products);
         $total = 0;
+        
         foreach($products as $product)
         {
             $price = Product::find($product->id)->price;
